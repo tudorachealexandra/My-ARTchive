@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "List of Difficulty Levels";
+}
+
+<h2>@ViewBag.Title</h2>
+<br />
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
+}
+
+@foreach (var difficulty in ViewBag.Difficulties)
+{
+    @Html.Label("DifficultyName", "Level of Difficulty")
+    <p>@difficulty.DifficultyName</p>
+    <a class="btn btn-success" href="/Difficulty/Show/@difficulty.DifficultyId">Show difficulty level</a>
+    <a class="btn btn-success" href="/Difficulty/Edit/@difficulty.DifficultyId">Edit difficulty level</a>
+    <br />
+    <hr />
+    <br />
+}
+
+
+<br />
+

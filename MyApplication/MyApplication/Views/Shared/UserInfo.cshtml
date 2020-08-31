@@ -1,0 +1,31 @@
+﻿@model MyApplication.Models.ApplicationUser
+
+<style>
+    .circle {     
+        height: 100%;
+        background: white;
+        margin: -1px 10px 0 -1px;
+        float: left;
+    }
+
+
+    .icon {
+        width: 100px;
+        height: 100px;
+        margin: 14%;
+        border-radius: 50%;
+    }
+</style>
+
+<div class="responsive">
+
+    <a onclick="window.open('/Users/OnPressUser/@Model.Id', '_blank')" style="cursor: pointer;">
+        <div class="circle"><img class="icon" src="~/Images/iconUser.jpg"></div>
+        <div> @Model.UserName</div>
+    </a>
+
+    <a class="btn btn-sm btn-default" href="/Users/Edit/@Model.Id"> Editare utilizator</a>
+    <a class="btn btn-sm btn-default" href="/Users/Show/@Model.Id"> Vizualizeaza utilizator</a>
+
+
+</div>

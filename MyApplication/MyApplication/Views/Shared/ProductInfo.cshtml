@@ -1,0 +1,17 @@
+﻿@model MyApplication.Models.Product
+
+<div class="gallery" onclick="window.location = '/Product/Show/@Model.ProductID'" style="cursor: pointer;">
+            <img src="@Url.Content(Model.ImagePath)" />
+            <div class="desc colTextGallery">
+                <span class="postText">  @Model.Title</span>
+                <br />
+                <span class="postText" href="@Url.Action("OnPressUser", "Users", new { id = Model.User.Id})"> @Model.User.UserName </span> 
+            </div>
+</div>
+
+
+
+    
+
+
+

@@ -1,0 +1,199 @@
+﻿
+<div class="banner">
+    <div class="col-md-6" style="padding-top:5%;background-color: #21204d;">
+        <p class="textBanner1">Inspire and get inspired.</p>
+        <p class="textBanner2">Creativity takes courage.</p>
+</div>
+
+        <div class="col-md-6"  style="align-content:center;background-color: #21204d;">
+            <img class="homeImage" src="~/Assets/Creativity4.png" alt="" style="max-width:65%; width:65%; height:auto;" />
+        </div>
+    </div>
+
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
+}
+
+<div class="row" style="padding-top:3%">
+    
+        <p class="homeCategoriesText" style="text-align:center; font-size:7rem; color:#21204d;">CATEGORIES</p>
+
+</div>
+
+<section id="banner-images-index" class="container container-images"  >
+
+    <div class="carousel-images">
+        <div class="col-md-2 classIndexCarousel">
+            <div class="carouselImg" style="align-content:center; padding-top:15px; ">
+                <a class="hoverImage" href="/Category/Show/8" style="display:flex;justify-content: center;align-items: center;">
+                    <img src="~/Assets/typography.jpg" alt="Typography" style="border-radius: 50%; max-width:70%; width:70%; height:auto; cursor: pointer;opacity:0.8" />
+                </a>
+            </div>
+            <div style="display:flex;justify-content: center;align-items: center; text-align:center; font-size:x-large;padding:25px;">
+                <a class="hoverSpan" href="/Category/Show/8" style="cursor:pointer; text-decoration:none">
+                    <span style="color:#21204d;">TYPOGRAPHY</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-2 classIndexCarousel">
+            <div class="carouselImg" style="align-content:center; padding-top:15px;">
+                <a class="hoverImage" href="/Category/Show/9" style="display:flex;justify-content: center;align-items: center; ">
+                    <img src="~/Assets/astronaut.jpg" alt="Illustration" style="border-radius: 50%; max-width:70%; width:70%; height:auto; cursor: pointer;opacity:0.8" />
+                </a>
+            </div>
+            <div style="display:flex;justify-content: center;align-items: center; text-align:center; font-size:x-large;padding:25px;">
+                <a class="hoverSpan" href="/Category/Show/9" style="cursor:pointer; text-decoration:none">
+                    <span style="color:#21204d;">ILLUSTRATION</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-2 classIndexCarousel">
+            <div class="carouselImg" style="align-content:center; padding-top:15px;">
+                <a class="hoverImage" href="/Category/Show/12" style="display:flex;justify-content: center;align-items: center;">
+                    <img src="~/Assets/graphicDesign2.jpg" alt="Design" style="border-radius: 50%; max-width:70%; width:70%; height:auto; cursor: pointer;opacity:0.8" />
+                </a>
+            </div>
+            <div style="display:flex;justify-content: center;align-items: center; text-align:center; font-size:x-large;padding:25px;">
+                <a class="hoverSpan" href="/Category/Show/12" style="cursor:pointer; text-decoration:none">
+                    <span style="color:#21204d;">DESIGN</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-2 classIndexCarousel">
+            <div class="carouselImg" style="align-content:center; padding-top:15px;">
+                <a class="hoverImage" href="/Category/Show/10" style="display:flex;justify-content: center;align-items: center;">
+                    <img src="~/Assets/logoSwan.jpg" alt="Gorilla" style="border-radius: 50%; max-width:70%; width:70%; height:auto; cursor: pointer;opacity:0.8" />
+                </a>
+            </div>
+            <div style="display:flex;justify-content: center;align-items: center; text-align:center; font-size:x-large;padding:25px;">
+                <a class="hoverSpan" href="/Category/Show/10" style="cursor:pointer; text-decoration:none">
+                    <span style="color:#21204d;">LOGO</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-2 classIndexCarousel">
+            <div class="carouselImg" style="align-content:center; padding-top:15px;">
+                <a class="hoverImage" href="/Category/Show/11" style="display:flex;justify-content: center;align-items: center;">
+                    <img src="~/Assets/anime.jpg" alt="Anime" style="border-radius: 50%; max-width:70%; width:70%; height:auto; cursor: pointer;opacity:0.8" />
+                </a>
+            </div>
+            <div style="display:flex;justify-content: center;align-items: center; text-align:center; font-size:x-large;padding:25px;">
+                <a class="hoverSpan" href="/Category/Show/11" style="cursor:pointer; text-decoration:none">
+                    <span  style="color:#21204d;">ANIME</span>
+                 </a>
+            </div>
+        </div>
+
+        <div class="col-md-2 classIndexCarousel">
+            <div class="carouselImg" style="align-content:center; padding-top:15px;">
+                <a class="hoverImage" href="/Category/Show/7" style="display:flex;justify-content: center;align-items: center;">
+                    <img src="~/Assets/cartoongirl7.jpg" alt="Cartoon" style="border-radius: 50%; max-width:70%; width:70%; height:auto; cursor: pointer;opacity:0.8" />
+                </a>
+            </div>
+            <div style="display:flex;justify-content: center;align-items: center; text-align:center; font-size:x-large;padding:25px;">
+                <a class="hoverSpan" href="/Category/Show/7" style="cursor:pointer; text-decoration:none">
+                    <span style="color:#21204d;">CARTOON</span>
+                </a>
+            </div>
+        </div>
+
+
+    </div>
+
+</section>
+
+<div class="postTitleContainer" style="padding-top:3%">
+    <p style="text-align:center; font-size:7rem; color:#21204d;">LATEST POSTS</p>
+</div>
+
+<div class="products">
+    <div class="row">
+        <div class="container">
+
+            @foreach (MyApplication.Models.Product product in ViewBag.Products)
+            {
+                <div class="col-md-4">
+                    @Html.Partial("ProductInfo", product)
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<style>
+    .effect-underline1:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        display: inline-block;
+        height: 1.2em;
+        width: 100%;
+        border-bottom: 2px solid #4F47BF;
+        margin-top: 10px;
+        opacity: 0;
+        -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+        transition: opacity 0.5s, transform 0.5s;
+        -webkit-transform: scale(0,1);
+        transform: scale(0,1);
+    }
+
+    .effect-underline1:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(0.4);
+        transform: scale(0.4);
+    }
+
+    .effect-underline2:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        display: inline-block;
+        height: 1.0em;
+        width: 100%;
+        border-bottom: 1px solid #4F47BF;
+        margin-top: 10px;
+        opacity: 0;
+        -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+        transition: opacity 0.5s, transform 0.5s;
+        -webkit-transform: scale(0,1);
+        transform: scale(0,1);
+    }
+
+    .effect-underline2:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(0.6);
+        transform: scale(0.6);
+    }
+
+    .effect-underline3:after {
+        content: '';
+        position: absolute;
+        right: 0;
+        left: 0;
+        display: inline-block;
+        height: 1.2em;
+        width: 100%;
+        border-bottom: 2px solid #4F47BF;
+        margin-top: 10px;
+        opacity: 0;
+        -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+        transition: opacity 0.5s, transform 0.5s;
+        -webkit-transform: scale(0,1);
+        transform: scale(0,1);
+    }
+
+    .effect-underline3:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(0.3);
+        transform: scale(0.3);
+    }
+
+</style>

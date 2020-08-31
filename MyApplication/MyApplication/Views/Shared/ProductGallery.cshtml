@@ -1,0 +1,50 @@
+﻿@model MyApplication.Models.Product
+
+
+<div class="_card">
+    <div class="_img " style="background-image:url(@Url.Content(Model.ImagePath))">
+
+    </div>
+
+    <h3 onclick="window.open('/Product/Show/@Model.ProductID', '_blank')" style="cursor: pointer;"> @Model.Title</h3>
+    <span class="postDescription">  @Model.Description</span>
+    <br>
+    <span class="postDescription"> Category: @Model.Category.CategoryName </span>
+    <br>
+    <span class="postDescription"> Created on: <i class="glyphicon glyphicon-time"></i>@Model.CreatedOn</span>
+    <br /><br />
+    <span class="postDescription">Votes:</span>
+    <br />
+    <div class=" productInfoDiv">
+        <input class="btn btn-default" type="button" value="Add to Favorites" onclick="onClickCheckBox()" />
+
+        <input class="btn btn-default cart-button" type="button" value="Add a comment" onclick="onClickAddComment()" />
+    </div>
+
+
+</div>
+
+<script type="text/javascript">
+
+
+     function onClickStar(rating) {
+         alert("This is an HTML Alert Message." + rating);
+         var r = rating;
+         location.href='@Url.Action("OnPressStar", "Product", new { id = Model.ProductID})'
+    }
+
+     function onClickCheckBox() {
+        //alert("This is an HTML Alert Message.");
+        location.href='@Url.Action("OnPress", "Product",new {id = Model.ProductID})'
+    }
+
+
+    function onClickAddComment() {
+        //alert("This is an HTML Alert Message.");
+        location.href='@Url.Action("OnPressAddComment", "Product",new {id = Model.ProductID})'
+    }
+</script>
+
+
+
+

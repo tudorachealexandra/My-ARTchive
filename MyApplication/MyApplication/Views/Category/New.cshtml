@@ -1,0 +1,49 @@
+﻿@model MyApplication.Models.Category
+@{
+    ViewBag.Title = "Add Category";
+}
+
+<div class="container-fluid" style="margin-top:50px">
+    <h2>Add Category</h2>
+    <br />
+
+    @using (Html.BeginForm("New", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="container-fluid">
+            <div class="rowNew">
+                <div class="colNew">
+                    <div class="card" style="background-color:#21204D;border-radius:20px;">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        <div class="form-group text-form" style="color: #A6CBED">
+                            @Html.Label("CategoryName", "Category Name", new { @class = "col-md-4 control-label" })
+
+                            <div class="col-md-8">
+                                @Html.TextBox("CategoryName", null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group text-form" style="color: #A6CBED">
+                            @Html.Label("Description", "Description", new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.TextArea("Description", null, new { @class = "form-control" })
+                                @Html.ValidationMessage("Description", "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        <div class="form-group text-form" style="color: #A6CBED">
+                            @Html.LabelFor(m => m.Image, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(m => m.Image, new { type = "file" })
+                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                                <br />
+                                <button class="btn btn-default" type="submit"> Add Category</button>
+                                
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+            </div>
+        </div>
+    }
+</div>

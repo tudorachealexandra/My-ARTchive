@@ -1,0 +1,48 @@
+﻿@model MyApplication.Models.ApplicationUser
+
+<div class="container" style="margin-top:5%; border-radius:5px;">
+    <div class="container" style="background-color:#21204D;display:block;border-radius:5px;margin-left:auto; margin-right:auto; margin-top:2%; width:30%; padding:1.5%; justify-content:center;align-self:center">
+        <h3 style="color: #A6CBED">@Model.UserName's contact details</h3>
+    </div>
+
+
+
+    <div class="container" style="margin-top:2%">
+        <div class="col-md-5" style="padding-top:3%;">
+            <i class="glyphicon glyphicon-envelope" style="color:#21204D"></i>  <span style="font-size:x-large">  Email address: </span> <span style="font-size:x-large; font-weight:900">@Model.Email</span>
+            <br />
+            @if (@Model.PhoneNumber != null)
+            {
+                <i class="glyphicon glyphicon-phone"></i> <span style="font-size:x-large">  Phone Number:  </span> <span style="font-size:x-large; font-weight:900"> @Model.PhoneNumber</span>
+            }
+            else
+            {
+                <i class="glyphicon glyphicon-phone"></i><span style="font-size:x-large">  Phone Number: </span> <span style="font-size:x-large; font-weight:900"> Not Added</span>
+            }
+            <br />
+            <i class="glyphicon glyphicon-th-list"></i>
+            @if (@ViewBag.roleName == "Editor")
+            {
+            <span style="font-size:x-large">
+                Role: Artist</span>
+            }
+            else
+            {
+            <span style="font-size:x-large">
+                Role: Employer</span>
+            }
+
+
+</div>
+
+
+        <div class="col-md-7" style="padding:20px;align-items:center">
+
+
+            <img src="@Url.Content(Model.ImagePath)" alt="" style="width:65%; height:auto; display:block; margin-left:auto; margin-right:auto; border:1.5px solid #21204D">
+
+        </div>
+
+    </div>
+
+</div>

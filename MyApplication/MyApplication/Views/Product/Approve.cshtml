@@ -1,0 +1,46 @@
+﻿
+@model IEnumerable<MyApplication.Models.Product>
+
+<h2>Approve the following products </h2>
+
+@foreach (MyApplication.Models.Product product in ViewBag.Products)
+{
+<div class="container">
+
+    <div class="col-md-4 col-sm-5">
+
+        @Html.Partial("ProductInfo", product)
+    </div>
+    <div class="center-block divcentrat">
+        <button class="btn btn-default" onclick="location.href='@Url.Action("ApproveProduct", "Product", new { id = @product.ProductID })'"> Approve post</button>
+       </div>
+        <div class="center-block divcentrat">
+            @using (Html.BeginForm(actionName: "Delete", controllerName: "Product", method: FormMethod.Post, routeValues: new { id = product.ProductID }))
+            {
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                <button class="btn btn-default" type="submit"> Disapprove post</button>
+            }
+        </div>
+    </div>
+    <br />
+    }
+
+    <script>
+        function approveFunction(id) {
+
+        }
+    </script>
+
+    <style>
+        .divcentrat {
+            align-self: center;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+    </style>
+

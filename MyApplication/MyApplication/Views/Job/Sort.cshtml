@@ -1,0 +1,57 @@
+﻿@model IEnumerable<MyApplication.Models.Job>
+
+
+
+<div class="container-fluid searchBarDiv">
+<h2 class="text-head">EXPLORE NEW JOBS</h2>
+<br />
+
+    <div class="form-group search">
+         <input type="text" id="Search" class="chPlholder" placeholder="Looking for a particular job?">
+          <button class="buttonSearch" type="submit" onclick="SearchFunction()">Search</button>
+    </div>
+</div>
+
+
+    <div class="container-fluid sortContainer">
+       <div class="sortContainer2">
+          <p> Filter jobs by </p>
+              <select id="Sort" onchange="SearchFunction()">
+                        <option value="">Select</option>
+                        <option value="DescDate">Descending Date</option>
+                        <option value="AscDate">Ascending Date</option>
+                        <option value="Beginner">Beginner</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Professional">Professional</option>
+
+              </select>
+       </div>
+     </div>
+
+<div class="container">
+      @foreach (MyApplication.Models.Job item in @ViewBag.List)
+             {
+                 @Html.Partial("JobInfo", item)
+             }
+</div>
+
+
+
+
+<script>
+    function SearchFunction() {
+
+            var val = $("#Search").val();
+            var e = document.getElementById("Sort");
+            var sortOrder = e.options[e.selectedIndex].text;
+
+            location.href = '@Url.Action("Sort", "Job")?searchValue=' + val + '&sortOrder=' + sortOrder;
+
+    }
+
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+</script>

@@ -1,0 +1,46 @@
+﻿@using MyApplication.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark navbar-fixed-top">
+    <div class="container-fluid sectionRegister">
+        <a class="navbar-brand" href="@Url.Action("Index", null, new { area = string.Empty, controller = "Product" }, Request.Url.Scheme)">
+            <span class="registerSpan"> <img src="~/Images/logo.png" width="70" height="70" class="logImg" alt=""> MyARTchive </span>
+        </a>
+    </div>
+</nav>
+
+ <section class="sign-up-section">
+    <div class="container">
+        <h2 class="text-center">Create an account & Join us!</h2>
+        <div class="row rowSignUp">
+            <div class="offset-lg-2 offset-md-1 col-lg-2 col-md-3 col-sm-5 text-center mb-5">
+                <img src="~/Assets/icon-artist.png" alt="artistIcon" class="artistIcon" >
+                <button class="btn btn-default">
+                @Html.ActionLink("As an artist", "RegisterEditor", "Account", new { @style = "color:#A6CBED " })
+                </button>
+            </div>
+            <div class="offset-lg-4 offset-md-3 offset-sm-2 col-lg-2 col-md-3 col-sm-5 text-center">
+                <img src="~/Assets/employer-icon.png" alt="employerIcon" class="employerIcon">
+                <button class="btn btn-sm btn-default" >
+                    @Html.ActionLink("As an employer", "RegisterUser", "Account", new { @style = "color:#A6CBED " })
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <h5 class="text-muted"> Already have an account? <a href="@Url.Action("Login", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)">Log in</a></h5>
+
+ <section class="sign-up-info" style="margin-top:30px">
+     <div class="container-fluid" style="background-image: url('/Assets/dark-blue-banner.jpg'); padding-bottom:50px;padding-top:50px;text-align: center!important;">
+         <p style="color:#A6CBED;font-size:30px; font-weight:100;">Become part of this ART community!</p>
+         <br />
+         <p style="color: #86A4BF;font-size:20px;font-weight:100;"> Artists and any art enthusiasts are welcome here to join our site and be part of our art community!</p>
+         
+     </div>
+ </section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval") }

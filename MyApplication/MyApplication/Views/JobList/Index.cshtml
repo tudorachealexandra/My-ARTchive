@@ -1,0 +1,19 @@
+﻿@model MyApplication.Models.JobList
+
+@{
+   ViewBag.Title = "Index";
+}
+
+<h2>Jobs you applied to</h2>
+<br />
+
+<div class="container">
+    @foreach (MyApplication.Models.Job job in ViewBag.CommissionList)
+    {
+
+        @Html.Partial("JobInfo", job)
+
+    }
+
+</div>
+

@@ -1,0 +1,355 @@
+﻿<!doctype html>
+<style>
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+        padding-top: 50px;
+    }
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+
+.products .caption {
+    height: 130px;
+    overflow: hidden;
+}
+.products .caption h4 {
+    white-space: nowrap;
+}
+.products .thumbnail img {
+    width: 100%;
+}
+.products .ratings {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+}
+.products .thumbnail {
+    padding: 0;
+}
+.products .thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+
+/* Pricing Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+
+footer {
+    margin: 50px 0;
+}
+
+
+
+</style>
+
+<html lang="en" class="no-js">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+    <title>Bootstrap Template</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/modern-business.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <div class="container" >
+        <div class="row" style="margin-top:40px; margin-bottom:40px;">
+           
+            <div class="col-md-6">
+                <p style="font-size:xx-large">IF YOU ARE LOOKING FOR...</p>
+                <div class="col-md-12" style="background-color:#21204D;padding:15px; margin-top:20px;margin-bottom:20px; border-radius:15px;">
+                <ul style="color: #A6CBED; font-size:medium">
+                    <li>Awesome artworks</li>
+                    <li>Daily inspiration</li>
+                    <li>Artists you'd like to work with</li>
+                    <li>Design ideas for your projects</li>
+
+                </ul>
+                </div>
+                <p style="font-size:large">You're lucky, this website is exactly what you've been looking for! Everything mentioned above can be found here.</p>
+            </div>
+            <div class="col-md-6">
+                <img class="img-responsive" src="~/Assets/Creativity2.png" alt="">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                    Get started
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color:#21204D; color: #A6CBED">
+                        <h4><i class="fa fa-fw fa-check"></i> Become a member</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Join us in order to be part of this beautiful journey. My ARTchive is the place for you to grow and thrive as an artist! </p>
+                        <a href="@Url.Action("Register", null, new { area = string.Empty, controller = "Account" }, Request.Url.Scheme)" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color:#21204D; color: #A6CBED">
+                        <h4><i class="fa fa-fw fa-compass"></i> Explore</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Need inspiration for your art? You came to the right place! Discover great artists and get in touch with them. Get inspired now! </p>
+                        <a href="@Url.Action("Index", null, new { area = string.Empty, controller = "Product" }, Request.Url.Scheme)" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading" style="background-color:#21204D; color: #A6CBED">
+                        <h4><i class="fa fa-fw fa-gift"></i> Showcase your creations</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>The first step in becoming a successful artist is to share your art so that people can discover your true talent and show their appreciation here, on My ARTchive.</p>
+                        <a href="@Url.Action("New", null, new { area = string.Empty, controller = "Product" }, Request.Url.Scheme)" class="btn btn-default">Learn More</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <section id="features" class="container parallax1 xdark-bg" style="background-image:url('/Assets/dark-blue-banner.jpg'); background-position:50%-72px;">
+
+
+            <div class="inner t-center clearfix pt-50 pb-80" style="padding-top:50px; padding-bottom:80px;">
+                <h2 class="header header-style-2 t-center pb-10 pt-20 white" style="padding-top:20px; padding-bottom:10px;">
+                    Showcase Your Portofolio for FREE
+                </h2>
+                <p class="normal t-center white pb-30"> This is the place where you can display your work in order to be seen by the world, attracting feedback and new opportunities! </p>
+                <div class="feature-boxes type-2 clearfix">
+                    <div class="feature-box no-margin-top col-xs-4 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="100">
+                        <div class="f-left feature-icon" style="color:white">
+                            <i class="fa fa-compass"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Free Exposure for Your Portofolio</h4>
+                            <p>Showcase your talent through MyARTchive and discover new chances to shine!</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box no-margin-top col-xs-4 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="150">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-eye-open" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Great Community</h4>
+                            <p>MyARTchive members are like a family, so feel free to ask questions and support each other. Making new friends was never this easy.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box no-margin-top col-xs-4 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="200">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-heart-empty" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Keep a track of you favs</h4>
+                            <p>We know that browsing through the website is fun, but did you know that you can save your favourite artworks too? And vice versa, of course!</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box col-xs-4 animated fadeIn visible" date-animation="fadeIn" data-animation-delay="250">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-bullhorn" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Explore the Contests</h4>
+                            <p>Everything is more enjoyable when there is a little competition. Not only does this allow you to practice your competitive spirit, but it's also really helpful in discovering your limits and overcoming them!</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box col-xs-4 animated fadeIn visible" date-animation="fadeIn" data-animation-delay="300">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-search" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Discover Our Categories</h4>
+                            <p>We prepared everything for you in order to enjoy the content you're searching for! There are multiple categories you can browse, depending on your preferences.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box col-xs-4 animated fadeIn visible" date-animation="fadeIn" data-animation-delay="350">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-comment" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Receive Feedback</h4>
+                            <p>You can enjoy the chance of getting feedback on your artworks from other memebers, through the comments.</p>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+
+            <div class="inner t-center clearfix pt-50 pb-80" style="padding-top:50px; padding-bottom:80px;">
+                <h2 class="header header-style-2 t-center pb-10 pt-20 white" style="padding-top:20px; padding-bottom:10px;">
+                    Turn your ideas into REALITY 
+                </h2>
+                <p class="normal t-center white pb-30"> Whatever your needs, there will be a freelancer to get it done: from logos, design, illustrations, anime, cartoons and typography.  </p>
+                <div class="feature-boxes type-2 clearfix">
+                    <div class="feature-box no-margin-top col-xs-4 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="100">
+                        <div class="f-left feature-icon" style="color:white">
+                            <i class="fa glyphicon glyphicon-pushpin"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding">Post a job</h4>
+                            <p>Simply post a job you need completed and receive competitive bids from artists within minutes.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box no-margin-top col-xs-4 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="150">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-thumbs-up" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Browse portfolios</h4>
+                            <p>Find professionals you can trust by browsing their samples of previous work and seeing their profile reviews.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box no-margin-top col-xs-4 animated fadeIn visible" data-animation="fadeIn" data-animation-delay="200">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-heart-empty" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Keep a track of you favs</h4>
+                            <p>We know that browsing through the website is fun, but did you know that you can save your favourite artworks too? And vice versa, of course!</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box col-xs-4 animated fadeIn visible" date-animation="fadeIn" data-animation-delay="250">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-bullhorn" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Explore the Contests</h4>
+                            <p>Everything is more enjoyable when there is a little competition. Not only does this allow you to practice your competitive spirit, but it's also really helpful in discovering your limits and overcoming them!</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box col-xs-4 animated fadeIn visible" date-animation="fadeIn" data-animation-delay="300">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-search" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Discover Our Categories</h4>
+                            <p>We prepared everything for you in order to enjoy the content you're searching for! There are multiple categories you can browse, depending on your preferences.</p>
+                        </div>
+                    </div>
+
+                    <div class="feature-box col-xs-4 animated fadeIn visible" date-animation="fadeIn" data-animation-delay="350">
+                        <div class="f-left feature-icon">
+                            <i class="fa glyphicon glyphicon-comment" style="color:white"></i>
+                        </div>
+                        <div class="feature-text f-left t-left white">
+                            <h4 class="no-margin normal no-padding"> Receive Feedback</h4>
+                            <p>You can enjoy the chance of getting feedback on your artworks from other memebers, through the comments.</p>
+                        </div>
+                    </div>
+                </div>
+                </p>
+            </div>
+
+        </section>
+
+
+
+    <!-- Portfolio Section
+    <div class="row">
+        <div class="col-lg-12">
+            <h2 class="page-header">Get inspired</h2>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="portfolio-item.html">
+                <img class="img-responsive img-portfolio img-hover" src="https://placehold.it/700x450" alt="">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="portfolio-item.html">
+                <img class="img-responsive img-portfolio img-hover" src="https://placehold.it/700x450" alt="">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="portfolio-item.html">
+                <img class="img-responsive img-portfolio img-hover" src="https://placehold.it/700x450" alt="">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="portfolio-item.html">
+                <img class="img-responsive img-portfolio img-hover" src="https://placehold.it/700x450" alt="">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="portfolio-item.html">
+                <img class="img-responsive img-portfolio img-hover" src="https://placehold.it/700x450" alt="">
+            </a>
+        </div>
+        <div class="col-md-4 col-sm-6">
+            <a href="portfolio-item.html">
+                <img class="img-responsive img-portfolio img-hover" src="https://placehold.it/700x450" alt="">
+            </a>
+        </div>
+    </div>
+
+        <hr>
+
+        <div class="well">
+            <div class="row">
+                <div class="col-md-8">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
+                </div>
+                <div class="col-md-4">
+                    <a class="btn btn-lg btn-primary btn-block" href="#">Call to Action</a>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        -->
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
+

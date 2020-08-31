@@ -1,0 +1,209 @@
+﻿@model MyApplication.Models.Job
+
+
+
+<div class="col-md-4 ">
+    <!--
+    <div class="panel panel-default" style="border-radius:10px">
+        <div class="panel-heading" style="background-color:#21204D; color: #A6CBED; text-align:center">
+            <div class="white">
+                <h4> @Model.Title </h4>
+            </div>
+            </div>
+        <div class="panel-body" style="background-color: #A6CBED; text-align:center">
+
+            <p>@Model.Content </p>
+            @if (@Model.DifficultyId == 1)
+            {
+                <p style="font-style:italic">Beginner</p>
+            }
+            @if (@Model.DifficultyId == 2)
+            {
+                <p style="font-style:italic">Intermediate</p>
+            }
+            @if (@Model.DifficultyId == 3)
+            {
+                <p style="font-style:italic">Professional</p>
+            }
+
+            <span style="font-size:smaller">By <a href="@Url.Action("OnPressUser", "Users", new { id = Model.User.Id })">@Model.User.UserName</a> </span>
+        </div>
+            <div class="panel-footer" style="background-color: #A6CBED; text-align:center">
+                <a class="btn btn-sm btn-default" href="/Job/Show/@Model.Id">Show Job</a>
+            </div>
+        </div>
+        -->
+
+    <div class="card ">
+        <h3 id="h2card">@Model.Title</h3>
+        <p id="pcard" style="font-size:medium">@Model.Content</p>
+        @if (@Model.DifficultyId == 1)
+        {
+            <p id="pcard" style="font-style:italic">Beginner</p>
+        }
+        @if (@Model.DifficultyId == 2)
+        {
+            <p id="pcard" style="font-style:italic">Intermediate</p>
+        }
+        @if (@Model.DifficultyId == 3)
+        {
+            <p id="pcard" style="font-style:italic">Professional</p>
+        }
+
+        <p id="pcard">By <a id="acarduser" href="@Url.Action("OnPressUser", "Users", new { id = Model.User.Id })">@Model.User.UserName</a> </p>
+        <a id="acard" href="/Job/Show/@Model.Id"> Read more...</a>
+    </div>
+</div>
+
+<style>
+    /*
+    .transition {
+    
+        position: relative;
+        top: 5px;
+        transition:0.5s;
+    }
+    .col-md-4:hover {
+        -o-transform: rotate(10deg);
+        -webkit-transform: rotate(10deg);
+        -moz-transform: rotate(10deg);
+    }
+        */
+
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+         background-color: white;
+    }
+
+    #info {
+        background-color: white;
+        padding: 2rem 0;
+    }
+    #rowcard {
+        width: 100%;
+        max-width: 45rem;
+        margin: 0 auto;
+        padding: 1.5rem;
+        background-color: white;
+    }
+
+    .card {
+        display: inline-block;
+        width: 85%;
+        padding: 4rem 1rem 7rem 1rem;
+        background-color: #21204D;
+        position: relative;
+        text-align: center;
+        border: 2px solid white;
+        margin-bottom: 30px;
+    }
+        .card:after {
+            content: "";
+            display: block;
+            width: 0px;
+            height: 0px;
+           
+            top: 0px;
+            right: 0px;
+            border-bottom: 20px solid #21204D;
+            border-left: 20px solid #21204D;
+            border-right: 20px solid white;
+            border-top: 20px solid white;
+            position: absolute;
+            filter: drop-shadow(-5px 5px 3px rgba(0,0,0,0.3));
+        }
+
+        .card:before {
+            content: "";
+            display: block;
+            width: 0px;
+            height: 0px;
+            border-top: 40px solid #21204D;
+            border-right: 40px solid #21204D;
+            border-left: 40px solid white;
+            border-bottom: 40px solid white;
+            bottom: 0px;
+            left: 0px;
+            position: absolute;
+            filter: drop-shadow(7px -7px 5px rgba(0,0,0,0.3));
+            margin-right: 10%;
+        }
+        .card:nth-of-type(1) {
+            margin-right: 9%;
+        }
+    #h2card {
+        color: snow;
+        margin-bottom: 1rem;
+        font-weight: 400;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+    #pcard {
+        color: #86A4BF;
+        font-size: 1.1rem;
+        line-height: 140%;
+    }
+
+    #pcarduser {
+        color: #86A4BF;
+        font-size: 1.1rem;
+        line-height: 140%;
+
+    }
+
+    #acarduser {
+        font-size: 1.3rem;
+        
+        transition: 0.5s;
+        color: #86A4BF;
+    }
+
+    #acarduser:hover {
+        text-decoration: none;
+  
+        color: #A6CBED;
+    }
+
+    #acard {
+        color: snow;
+        font-size: 1.3rem;
+        font-style: italic;
+        transition: 0.5s;
+    }
+
+        #acard:hover {
+            text-decoration: none;
+            font-stretch: wider;
+            color: #A6CBED;
+        }
+
+    /*effect-underline*/
+    a.effect-underline:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        display: inline-block;
+        height: 1em;
+        width: 100%;
+        border-bottom: 1px solid;
+        margin-top: 10px;
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: scale(0,1);
+        transform: scale(0,1);
+    }
+
+    a.effect-underline:hover:after {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+</style>
+

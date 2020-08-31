@@ -1,0 +1,33 @@
+﻿@model MyApplication.Models.ApplicationUser
+
+@{    ViewBag.Title = "Change your Profile Picture"; }
+
+<div class="container-fluid" style="margin-top:50px">
+    <h2>@ViewBag.Title</h2>
+    <br />
+
+    @using (Html.BeginForm("ChangePic", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="container-fluid">
+            <div class="rowNew">
+                <div class="colNew">
+                    <div class="card" style="background-color:#21204D;border-radius:40px;">
+                            @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                            @Html.AntiForgeryToken()
+                            @Html.HiddenFor(m => m.Id)
+                            <div class="form-group text-form" style="color: #A6CBED">
+                                @Html.LabelFor(m => m.Image, new { @class = "col-md-4 control-label" })
+                                <div class="col-md-8">
+                                    @Html.TextBoxFor(m => m.Image, new { type = "file" })
+                                    @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                    @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            
+                                <div class="text-center"><button class="btn my-4 btn-default" type="submit">Change picture</button></div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+    }
+</div>

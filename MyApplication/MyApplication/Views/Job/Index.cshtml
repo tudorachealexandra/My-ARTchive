@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "My Job Board";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+
+
+@if (TempData.ContainsKey("message"))
+{
+    <h3 class="alert alert-info" role="alert">@ViewBag.message</h3>
+}
+
+<div class="container">
+        @foreach (MyApplication.Models.Job job in ViewBag.Jobs)
+        {
+            
+                @Html.Partial("JobInfo", job)
+   
+        }
+</div>
+
+
+

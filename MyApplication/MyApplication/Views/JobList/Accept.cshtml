@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<MyApplication.Models.JobList>
+
+<h2>Choose a winner for your contest </h2>
+
+@foreach (MyApplication.Models.JobList j in ViewBag.CommissionList)
+{
+<div class="container">
+
+    <div class="col-md-4 col-sm-5">
+
+        <p>Candidate @j.CandidateId wants to take your job no @j.JobId</p>
+    </div>
+    <div class="center-block divcentrat">
+        <button class="btn btn-default" onclick="location.href='@Url.Action("Accept", "JobList", new { id = j.Id })'"> Accept</button>
+    </div>
+
+    <div class="center-block divcentrat">
+        @using (Html.BeginForm(actionName: "OnPressRemoveJob", controllerName: "JobList", method: FormMethod.Post, routeValues: new { id = j.Id }))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Delete)
+            <button class="btn btn-default" type="submit"> Decline</button>
+        }
+    </div>
+
+</div>
+    <br />
+}
+
+
+<style>
+    .divcentrat {
+        align-self: center;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+</style>
+

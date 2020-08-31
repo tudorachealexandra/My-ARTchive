@@ -1,0 +1,15 @@
+﻿
+<h2>Comments</h2>
+
+<div class="container" style="padding-top:10px;">
+    <div class="col containerComments">
+        @foreach (MyApplication.Models.Comment comment in ViewBag.Comments)
+        {
+        <div class="col-md-12">
+            <h4> <a href="@Url.Action("OnPressUser", "Users", new { id = comment.UserId })"> @comment.UserName</a></h4>
+            
+            <span style="color: #A6CBED"> @comment.CommentTxt </span>
+        </div>
+        }
+    </div>
+</div>

@@ -1,0 +1,25 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "Comments List";
+}
+
+<h2> Comments Settings </h2>
+
+@foreach (MyApplication.Models.Comment comm in ViewBag.Comments)
+{
+<div style="display:flex; justify-content:center">
+    <div class="text-center" style="background-color:#21204D; color:#86A4BF; padding:2%; border-radius:25px; width:30%; margin-bottom:3%  ">
+        @comm.CommentTxt
+
+        @using (Html.BeginForm(actionName: "Delete", controllerName: "Comment", method: FormMethod.Post, routeValues: new { id = comm.CommentId }))
+        {
+            @Html.HttpMethodOverride(HttpVerbs.Delete)
+            <br />
+            <button class="btn btn-default" type="submit">Delete comment</button>
+        }
+    </div>
+</div>
+}
+

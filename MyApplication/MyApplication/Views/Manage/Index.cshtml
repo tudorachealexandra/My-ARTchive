@@ -1,0 +1,104 @@
+﻿@model MyApplication.Models.IndexViewModel
+@{
+    ViewBag.Title = "Manage Account Settings";
+}
+
+<div class="container-fluid" style="margin-top:50px">
+    <h2>@ViewBag.Title</h2>
+    <br />
+    <p class="text-success">@ViewBag.StatusMessage</p>
+
+
+    <div class="container-fluid" style="background-color: #21204D; border-radius:20px;">
+        <div class="col-md-7">
+            <img src="@Url.Content(ViewBag.img)" class="imgGallery2" alt="ProfilePicture" style="width:200px; height:200px; border:1px solid white;margin-top:40px">
+            <div class="text-center" style="padding:30px; font-size:medium">
+                <button class="btn my-4 btn-default" style="margin-top:10px;margin-bottom:10px;" onclick="location.href='@Url.Action("ChangePicture", "Manage")'"> Change your profile picture </button>
+                <p style="font-size:small; color: #A6CBED"> This is your profile picture that shows up beside any comments and new posts you submit on My ARTchive.</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-5" style="padding-top:80px;padding-bottom:80px;">
+            <div class="text-center"> <p style="font-size:large; color: #A6CBED"> Hello, @ViewBag.uName </p></div>
+
+            <div class="text-center">
+                @if (Model.HasPassword)
+                {
+                    <button class="btn my-4 btn-default" style="margin-top:10px;margin-bottom:30px;" onclick="location.href='@Url.Action("ChangePassword", "Manage")'"> Change your password </button>
+                }
+                else
+                {
+                    <button class="btn my-4 btn-default" style="margin-top:10px;margin-bottom:20px;" onclick="location.href='@Url.Action("Create", "SetPassword")'"> Set password </button>
+                }
+                <p style="font-size:small; color: #A6CBED">TIP: We recommend you to keep your account safe by using a strong password, including uppercase and lowercase letters, as well as numbers and symbols.</p>
+            </div>
+        </div>
+        </div>
+</div>
+
+
+                        @*
+                <dt>External Logins:</dt>
+                <dd>
+                    @Model.Logins.Count [
+                    @Html.ActionLink("Manage", "ManageLogins") ]
+                </dd>
+                    Phone Numbers can used as a second factor of verification in a two-factor authentication system.
+
+                     See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                        for details on setting up this ASP.NET application to support two-factor authentication using SMS.
+
+                     Uncomment the following block after you have set up two-factor authentication
+                    *@
+                    @*
+                        <dt>Phone Number:</dt>
+                        <dd>
+                            @(Model.PhoneNumber ?? "None")
+                            @if (Model.PhoneNumber != null)
+                            {
+                                <br />
+                                <text>[&nbsp;&nbsp;@Html.ActionLink("Change", "AddPhoneNumber")&nbsp;&nbsp;]</text>
+                                using (Html.BeginForm("RemovePhoneNumber", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <text>[<input type="submit" value="Remove" class="btn-link" />]</text>
+                                }
+                            }
+                            else
+                            {
+                                <text>[&nbsp;&nbsp;@Html.ActionLink("Add", "AddPhoneNumber")
+                            }
+                        </dd>
+
+                    <dt>Two-Factor Authentication:</dt>
+                    <dd>
+                        <p>
+                            There are no two-factor authentication providers configured. See <a href="https://go.microsoft.com/fwlink/?LinkId=403804">this article</a>
+                            for details on setting up this ASP.NET application to support two-factor authentication.
+                        </p>
+                        @if (Model.TwoFactor)
+                            {
+                                using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <text>Enabled
+                                    <input type="submit" value="Disable" class="btn btn-link" />
+                                    </text>
+                                }
+                            }
+                            else
+                            {
+                                using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <text>Disabled
+                                    <input type="submit" value="Enable" class="btn btn-link" />
+                                    </text>
+                                }
+                            }
+                </dd>*@
+
+
+

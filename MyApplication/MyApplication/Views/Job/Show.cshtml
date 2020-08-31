@@ -1,0 +1,341 @@
+﻿@model MyApplication.Models.Job
+
+@{
+    ViewBag.Title = "Show";
+}
+
+
+<!--
+
+    <div class="container ShowJobDiv">
+        <div class="col-md-8" style="background-color: #21204D;padding-top:13px; border-radius:10px">
+            <div class="panel panel-default" style="background-color: #A6CBED; border-radius:10px">
+                <div style=" text-align:center">
+
+                        <h3> @Model.Title </h3>
+
+                </div>
+                <div class="panel-body" style=" text-align:center">
+                    @if (@Model.JobTaken == true)
+                    {
+                        <p>Status: Taken</p>
+                        <p>Winner: @ViewBag.WinnerName</p>
+                    }
+                    else
+                    {
+                        <p>Status: Available</p>
+                    }
+                    <br />
+                    <p>@Model.Content </p>
+                    <span style="font-size:smaller">By <a href="@Url.Action("OnPressUser", "Users", new { id = Model.User.Id })">@Model.User.UserName</a> on @Model.Date.ToString("dd/MM/yyyy")</span>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div class="col-md-4" style="display:flex;flex-direction:column">
+            @if (User.IsInRole("Editor")) {
+            <button style="margin:10px" class="btn btn-default" onclick="location.href='@Url.Action("TakeJob", "Job", new { id = Model.Id})'">I want to take this job</button>
+            }
+            @if (@Model.JobTaken == false)
+            {
+            <button style="margin:10px" class="btn btn-default" onclick="location.href='@Url.Action("GetJobRequests", "Job", new { id = Model.Id })'"> See candidates</button> }
+            else
+            {
+                <button class="btn btn-default" onclick="location.href='@Url.Action("Show", "Users", new { id = Model.WinnerId })'">View Winner Details</button>
+            }
+
+            @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+                || ViewBag.esteAdmin)
+            {
+
+                <div class="panel-footer">
+                    <a class="btn btn-default" href="/Job/Edit/@Model.Id">Edit Job</a>
+                    <br />
+                </div>
+            }
+        </div>
+</div>
+
+        @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+            || ViewBag.esteAdmin)
+        {
+
+            using (Html.BeginForm(actionName: "Delete", controllerName: "Job", method: FormMethod.Post, routeValues: new { id = @Model.Id }))
+            {
+
+                @Html.HttpMethodOverride(HttpVerbs.Delete)
+                <br />
+                <button class="btn btn-success" type="submit">Delete Job</button>
+
+            }
+        }
+    -->
+<div class="container" style="margin-top:40px">
+    <div class="col-md-9">
+        <div class="card ">
+            <h3 id="h2card">@Model.Title</h3>
+            @if (@Model.JobTaken == true)
+            {
+                <p>Status: Taken</p>
+                <p>Winner: @ViewBag.WinnerName</p>
+            }
+            else
+            {
+                <p id="pcard">Status: Available</p>
+            }
+            <p id="pcard">Description: @Model.Content</p>
+            @if (@Model.DifficultyId == 1)
+            {
+                <p id="pcard"> Difficulty: Beginner</p>
+            }
+            @if (@Model.DifficultyId == 2)
+            {
+                <p id="pcard">Difficulty: Intermediate</p>
+            }
+            @if (@Model.DifficultyId == 3)
+            {
+                <p id="pcard">Difficulty: Professional</p>
+            }
+
+            <p id="pcard">Employer: <a id="acarduser" href="@Url.Action("OnPressUser", "Users", new { id = Model.User.Id })">@Model.User.UserName</a> </p>
+
+
+            @if (User.IsInRole("Editor") && ViewBag.Participation == null)
+            {
+                <p id="pcard">
+                    <a id="acard" style="cursor: pointer;" onclick="location.href='@Url.Action("TakeJob", "Job", new { id = Model.Id })'">Join the contest</a>
+                </p>
+            }
+
+            else if (User.IsInRole("Editor") && ViewBag.Participation != null)
+            {
+                <p id="pcard">
+                    <a id="acard" style="cursor: pointer;" >Already joined this contest.</a>
+                </p>
+            }
+            
+            @if (@Model.JobTaken == false)
+            {
+                <p id="pcard">
+                    <a id="acard" style="cursor: pointer;" onclick="location.href='@Url.Action("GetJobRequests", "Job", new { id = Model.Id })'"> See candidates</a>
+                </p> }
+            else
+            {
+                <p id="pcard">
+                    <a id="acard" style="cursor: pointer;" onclick="location.href='@Url.Action("Show", "Users", new { id = Model.WinnerId })'">View Winner Details</a>
+                </p>
+            }
+
+
+            @if (Model.UserId == ViewBag.utilizatorCurent
+                   || ViewBag.esteAdmin)
+            {
+                <p id="pcard">
+                    <a id="acard" href="/Job/Edit/@Model.Id">Edit</a>
+                </p>
+            }
+
+            @if (Model.UserId == ViewBag.utilizatorCurent
+               || ViewBag.esteAdmin)
+            {
+
+                using (Html.BeginForm(actionName: "Delete", controllerName: "Job", method: FormMethod.Post, routeValues: new { id = @Model.Id }))
+                {
+
+                    @Html.HttpMethodOverride(HttpVerbs.Delete)
+                    <br />
+                    <button class="btn btn-default" type="submit">Delete Job</button>
+
+                }
+            }
+        </div>
+    </div>
+    <div class="col-md-3" style=" vertical-align: middle; display: inline-block;float: none; ">
+        <div class="speech-bubble">
+            <a href="@Url.Action("OnPressUser", "Users", new { id = Model.User.Id })">
+                <img src="@Url.Content(Model.User.ImagePath)"   style="border-radius: 50%; border:1px solid white; max-width:100%; width:100%; height:auto; cursor: pointer;" />
+            </a>
+           
+        </div>
+    </div>
+    </div>
+
+
+<style>
+        .speech-bubble {
+            position: relative;
+            background: #21204D;
+            border-radius: 50%;
+            padding: 25px;
+            margin-top: 30px;
+        }
+
+            .speech-bubble:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                width: 0;
+                height: 0;
+                border: 28px solid transparent;
+                border-right-color: #21204D;
+                border-left: 0;
+                margin-top: -22px;
+                margin-left: -22px;
+            }
+
+            
+
+
+        /*
+        .transition {
+
+            position: relative;
+            top: 5px;
+            transition:0.5s;
+        }
+        .col-md-4:hover {
+            -o-transform: rotate(10deg);
+            -webkit-transform: rotate(10deg);
+            -moz-transform: rotate(10deg);
+        }
+            */
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        #info {
+            background-color: white;
+            padding: 2rem 0;
+        }
+
+        #rowcard {
+            width: 100%;
+            max-width: 45rem;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background-color: white;
+        }
+
+        .card {
+            display: inline-block;
+            width: 85%;
+            padding: 3rem 1rem 5rem 1rem;
+            background-color: #21204D;
+            position: relative;
+            text-align: center;
+            border: 2px solid white;
+            margin-bottom: 30px;
+        }
+
+            .card:after {
+                content: "";
+                display: block;
+                width: 0px;
+                height: 0px;
+                top: 0px;
+                right: 0px;
+                border-bottom: 20px solid #21204D;
+                border-left: 20px solid #21204D;
+                border-right: 20px solid white;
+                border-top: 20px solid white;
+                position: absolute;
+                filter: drop-shadow(-5px 5px 3px rgba(0,0,0,0.3));
+            }
+
+            .card:before {
+                content: "";
+                display: block;
+                width: 0px;
+                height: 0px;
+                border-top: 40px solid #21204D;
+                border-right: 40px solid #21204D;
+                border-left: 40px solid white;
+                border-bottom: 40px solid white;
+                bottom: 0px;
+                left: 0px;
+                position: absolute;
+                filter: drop-shadow(7px -7px 5px rgba(0,0,0,0.3));
+                margin-right: 10%;
+            }
+
+            .card:nth-of-type(1) {
+                margin-right: 9%;
+            }
+
+        #h2card {
+            color: snow;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+    #pcard {
+        color: #86A4BF;
+        font-size: 1.1rem;
+        line-height: 140%;
+        font-size: medium;
+    }
+
+        #pcarduser {
+            color: #86A4BF;
+            font-size: 1.1rem;
+            line-height: 140%;
+        }
+
+        #acarduser {
+            font-size: 1.3rem;
+            transition: 0.5s;
+            color: #86A4BF;
+        }
+
+            #acarduser:hover {
+                text-decoration: none;
+                color: #A6CBED;
+            }
+
+        #acard {
+            color: snow;
+            font-size: 1.3rem;
+            font-style: italic;
+            transition: 0.5s;
+        }
+
+            #acard:hover {
+                text-decoration: none;
+                font-stretch: wider;
+                color: #A6CBED;
+            }
+
+        /*effect-underline*/
+        a.effect-underline:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            display: inline-block;
+            height: 1em;
+            width: 100%;
+            border-bottom: 1px solid;
+            margin-top: 10px;
+            opacity: 0;
+            -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+            transition: opacity 0.35s, transform 0.35s;
+            -webkit-transform: scale(0,1);
+            transform: scale(0,1);
+        }
+
+        a.effect-underline:hover:after {
+            opacity: 1;
+            -webkit-transform: scale(1);
+            transform: scale(1);
+        }
+</style>
+

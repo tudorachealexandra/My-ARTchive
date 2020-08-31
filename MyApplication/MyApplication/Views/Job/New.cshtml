@@ -1,0 +1,58 @@
+﻿@model MyApplication.Models.Job
+
+
+@{
+    ViewBag.Titlu = "Create a new job";
+}
+
+<div class="container-fluid" style="margin-top:50px">
+    <h2>@ViewBag.Titlu</h2>
+
+    @using (Html.BeginForm(actionName: "New", controllerName: "Job"))
+    {
+         <hr />
+    <div class="container-fluid">
+    <div class="rowNew">
+        <div class="colNew">
+            <div class="card" style="background-color:#21204D;border-radius:40px;">
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                @Html.HiddenFor(m => m.UserId)
+                <div class="form-group text-form" style="color: #A6CBED">
+                    @Html.Label("Title", "Job Title", new { @class = "col-md-4 control-label" })
+                    
+                    <div class="col-md-8">
+                        @Html.TextBox("Title", null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                    </div>
+                 </div>
+                   
+
+                <div class="form-group text-form" style="color: #A6CBED">
+                    @Html.Label("Content", "Job Content", new { @class = "col-md-4 control-label" })
+                    <div class="col-md-8">
+                        @Html.TextArea("Content", null, new { @class = "form-control" })
+                        @Html.ValidationMessage("Content", "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    @Html.Hidden("Date", DateTime.Now, new { @class = "form-control" })
+
+                <div class="form-group text-form" style="color: #A6CBED">
+                    <label class="col-md-4 control-label">Select difficulty level</label>
+                    <div class="col-md-8">
+                        @Html.DropDownListFor(m => m.DifficultyId, new SelectList(Model.Difficulties, "Value", "Text"),
+                            "Select difficulty level", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.DifficultyId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                    <div class="text-center">
+                        <button class="btn btn-default my-4" type="submit">Add Job</button>
+                    </div>
+            </div>
+        </div>
+    </div>
+    </div>
+     }
+
+</div>
+

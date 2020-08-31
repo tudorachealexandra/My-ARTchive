@@ -1,0 +1,148 @@
+﻿@model MyApplication.Models.Product
+
+@{
+    ViewBag.Title = "Show";
+}
+
+
+<div class="container" style="margin-top:50px">
+
+    <div class="row" style="padding:5px">
+        <div class="col-md-8">
+            <div class="imgContainer">
+                <a target="_blank" href="@Url.Content(Model.ImagePath)" alt="">
+
+                    <img src="@Url.Content(Model.ImagePath)" class="imgGallery" alt="@Model.Title">
+                </a>
+            </div>
+
+        </div>
+
+        <div class="col-md-4" style="padding-left:5%; padding-right:5%">
+
+
+            <div class="card" style="background-color:#21204D;border-radius:10px;padding-left:3%;padding-right:3%">
+                <h3 style="font-weight:600;color:#A6CBED"> @Model.Title </h3>
+                <h4 class="text-center" style="color:#A6CBED"> by <a style="color: #86A4BF;" href="@Url.Action("OnPressUser", "Users", new { id = Model.User.Id})">@Model.User.UserName </a></h4>
+                <span class="postDescription"> Description: <br /> @Model.Description</span>
+                <div class="postDescription"> Category:<br /><a href="/Category/Show/@Model.Category.CategoryId">@Model.Category.CategoryName </a></div>
+                <span class="postDescription"> Posted: <br /> @Model.CreatedOn.ToString("dd/MM/yyyy") </span>
+                <span class="postDescription"> Likes:  @ViewBag.Likes </span>
+                <span class="postDescription"> Favorites:  @ViewBag.Favorites </span>
+
+                <div class="container" style="justify-content:center; width:100%; display:flex">
+                    <button class="btn btn-default" style="background-color:#4F47BF; color:aliceblue; margin-right:2%;" onclick="location.href='@Url.Action("OnPressLike", "Product", new { id = Model.ProductID})' "><span class="glyphicon glyphicon-thumbs-up"></span> Like</button>
+                    <button class="btn btn-default " style="background-color:#4F47BF; color:aliceblue" onclick="onClickAddComment()"> <span class="glyphicon glyphicon-comment"></span> Comment</button> <br />
+                </div>
+                <div class="container" style="justify-content:center; width:100%; display:flex">
+                    <button class="btn btn-default" style="background-color:#4F47BF; color:aliceblue; margin-top:7px" onclick="location.href='@Url.Action("OnPressFavorite", "Product", new { id = Model.ProductID})' "> <span class="glyphicon glyphicon-star-empty"></span> Add to Favorites</button>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row col-md-8" style="padding:5px;">
+
+
+        <div class="productInfoDiv2">
+            @if (ViewBag.afisareButoane == true && Model.UserId == ViewBag.utilizatorCurent
+                || ViewBag.esteAdmin)
+            {
+
+
+                <button class="btn btn-default" style="margin-right:2%" onclick="location.href='@Url.Action("Edit", "Product", new {id = Model.ProductID})'">Edit post</button>
+                <button class="btn btn-default" style="margin-right:2%" onclick="location.href='@Url.Action("ShowAll", "Comment", new {id = Model.ProductID})'">Edit comments</button>
+                using (Html.BeginForm(actionName: "Delete", controllerName: "Product", method: FormMethod.Post, routeValues: new { id = @Model.ProductID }))
+                {
+                    @Html.HttpMethodOverride(HttpVerbs.Delete)
+
+                    <button class="btn btn-default" type="submit">Delete post</button>
+                }
+
+            }
+
+
+        </div>
+    </div>
+    </div>
+
+
+    <div class="container" style="justify-content:center;">
+        <div class="col-md-12" style="padding-top:50px; padding-bottom:20px;">
+            <div class="galleryRow">
+                <h1> Comments </h1>
+            </div>
+
+            @if (ViewBag.Comments.Count ==0)
+            {
+                <div style="text-align:center">
+                    <h3> There are no comments yet! Be the first one.</h3>
+                </div>
+            }
+
+            <ul class="comment-section" ">
+                @for (var i = 0; i < ViewBag.Comments.Count; i++)
+                {
+                    <li class="comments-list" >
+                        <a class="avatar" href="@Url.Action("OnPressUser", "Users", new { id = ViewBag.Comments[i].UserId})" style="align-content:center">
+
+                            <img src="@Url.Content(ViewBag.Photos[i])" width="55" height="55" alt="Profile Avatar" title="@ViewBag.Comments[i].UserName" />
+                        </a>
+                        <div class="contentCom">
+                            <a id="user_name" href="@Url.Action("OnPressUser", "Users", new { id = ViewBag.Comments[i].UserId})"> @ViewBag.Comments[i].UserName </a>
+                            <p style="color: #A6CBED;font-size:medium"> @ViewBag.Comments[i].CommentTxt </p>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+
+
+    <script type="text/javascript">
+
+         function onClickCheckBox() {
+            //alert("This is an HTML Alert Message.");
+            location.href='@Url.Action("OnPressFavorite", "Product",new {id = Model.ProductID})'
+        }
+
+        function onClickAddComment() {
+            //alert("This is an HTML Alert Message.");
+            location.href='@Url.Action("OnPressAddComment", "Product",new {id = Model.ProductID})'
+        }
+
+
+
+
+
+        $(function () {
+            // Initialize numeric spinner input boxes
+            //$(".numeric-spinner").spinedit();
+            // Initialize modal dialog
+            // attach modal-container bootstrap attributes to links with .modal-link class.
+            // when a link is clicked with these attributes, bootstrap will display the href content in a modal dialog.
+            $('body').on('click', '.modal-link', function (e) {
+                e.preventDefault();
+                $(this).attr('data-target', '#modal-container');
+                $(this).attr('data-toggle', 'modal');
+            });
+            // Attach listener to .modal-close-btn's so that when the button is pressed the modal dialog disappears
+            $('body').on('click', '.modal-close-btn', function () {
+                $('#modal-container').modal('hide');
+            });
+            //clear modal cache, so that new content can be loaded
+            $('#modal-container').on('hidden.bs.modal', function () {
+                $(this).removeData('bs.modal');
+            });
+            $('#CancelModal').on('click', function () {
+                return false;
+            });
+        });
+
+    </script>

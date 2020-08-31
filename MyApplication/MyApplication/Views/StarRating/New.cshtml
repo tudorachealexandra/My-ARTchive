@@ -1,0 +1,43 @@
+﻿@model MyApplication.Models.StarRating
+
+@{
+    ViewBag.Titlu = "Add rating";
+}
+
+
+<div class="container-fluid" style="margin-top:50px">
+
+    <h3>Rate @ViewBag.ReceiverName's activity</h3>
+    <br />
+
+    @using (Html.BeginForm("New", "StarRating", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="container-fluid">
+            <div class="rowNew">
+                <div class="colNew">
+                    <div class="card" style="background-color:#21204D;border-radius:20px;">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.GiverId)
+                        @Html.HiddenFor(m => m.ReceiverId)
+                        @Html.HiddenFor(m => m.StarRatingId)
+
+                        <div class="form-group text-form" style="color: #A6CBED;justify-content:center; display:flex; ">
+
+                            @Html.DropDownListFor(m => m.selectedValue, new SelectList( Model.Values,"Value","Text"),
+                                        "Select rating", new { @class = "form-control", width="80%" })
+
+                            @Html.ValidationMessageFor(m => m.selectedValue, "", new { @class = "text-danger" })
+                            <br/>
+                            <div class="text-center">
+                                <button class="btn btn-sm btn-default" style="margin-left:10%" type="submit">Submit</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+                

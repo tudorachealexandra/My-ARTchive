@@ -1,0 +1,74 @@
+﻿@model MyApplication.Models.ApplicationUser
+@{
+    ViewBag.Title = "OnPressUser";
+}
+
+
+<div class="container-fluid" style="background-color: #21204D; border-radius:20px; margin:50px">
+    <div class="col-md-7">
+        <img src="@Url.Content(Model.ImagePath)" class="imgGallery" alt="ProfilePicture" style="width:200px; height:200px; border:1px solid white;margin-top:40px">
+        <div class="text-center" style="padding-bottom:30px; padding-top:30px ">
+            <p style="color:white;font-size:x-large">@ViewBag.name's Profile</p>
+
+            @if (ViewBag.Counter == 0)
+            {
+                <p style="color:white"> Employer </p>
+            }
+            else
+            {
+                <p style="color:#A6CBED"> Artist </p>
+            }
+        </div>
+    </div>
+    <div class="col-md-5" style="padding-top:80px;padding-bottom:40px;">
+        <div>
+           
+
+            <div class="text-center"> <h2 style="color:white">Score: @ViewBag.RatingFinal / 5 </h2></div>
+            <br />
+            <div class="text-center"><input class="btn btn-default " type="button" value="Rate the user" onclick="onClickAddRating()" /></div>
+            <div class="text-center" style="padding:30px; font-size:medium">
+                <p style="font-size:small; color: #A6CBED">You can contribute to this user's reputation by giving them a rating according to their merit.</p>
+            </div>
+        </div>
+        </div>
+</div>
+
+<div class="products">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+                @foreach (MyApplication.Models.Product product in ViewBag.Products)
+                {
+                    <div class="col-md-4 col-sm-5">
+
+                        @Html.Partial("ProductInfo", product)
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-top:50px">
+
+        <div class="container">
+            @foreach (MyApplication.Models.Job job in ViewBag.Jobs)
+            {
+
+                @Html.Partial("JobInfo", job)
+
+            }
+        </div>
+
+</div>
+
+
+<script type="text/javascript">
+
+
+        function onClickAddRating() {
+            location.href='@Url.Action("OnPressAddRating", "Users",new {id = Model.Id})'
+        }
+
+</script>

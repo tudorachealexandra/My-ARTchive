@@ -1,0 +1,48 @@
+﻿@model MyApplication.Models.ApplicationUser
+@{
+
+    ViewBag.Title = "Our Members";
+}
+
+<div class="bannerCommunity">
+    <div class="banner2" style="margin-top:20px;">
+        <h2>@ViewBag.Title</h2>
+    </div>
+</div>
+
+    <div class="container-fluid" style="margin-top:30px">
+
+        <br />
+        <div class="row">
+            <div class="container">
+                <div class="row">
+                    @for (var i = 1; i < ViewBag.UsersList.Count; i++)
+                    {
+                        <div class="col-md-4" style=" display:flex; align-items:center;">
+                            <div class="responsive" style="width:100%; margin-bottom:20px;">
+                                <div class="cardUser">
+                                    <div class="circleUser">
+                                        <img class="iconUser" src="@Url.Content(ViewBag.UsersList[i].ImagePath)" alt="@ViewBag.UsersList[i].UserName" />
+                                    </div>
+                                    <div class="textUser">
+                                        <h3>@ViewBag.UsersList[i].UserName</h3>
+                                       
+                                        <a class="btn btn-sm btn-default" href="/Users/OnPressUser/@ViewBag.UsersList[i].Id"> Visit Profile</a>
+                                    
+                                    @if (User.IsInRole("Administrator"))
+                                    {
+                                        <a class="btn btn-sm btn-default" href="/Users/Edit/@ViewBag.UsersList[i].Id"> Edit User</a>
+                                        
+                                    }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+

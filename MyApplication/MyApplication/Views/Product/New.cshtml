@@ -1,0 +1,63 @@
+﻿
+
+@model MyApplication.Models.Product
+
+@{
+    ViewBag.Titlu = "Submit Artwork";
+}
+
+<div class="container-fluid" style="margin-top:50px">
+    <h2>@ViewBag.Titlu</h2>
+    <br />
+
+@using (Html.BeginForm("New", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+ {
+        <div class="container-fluid">
+            <div class="rowNew">
+                <div class="colNew">
+                    <div class="card" style="background-color:#21204D;border-radius:40px;">
+                        @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.UserId)
+                        <div class="form-group text-form" style="color: #A6CBED">
+                            @Html.Label("Title", "Post Title", new { @class = "col-md-4 control-label" })
+
+                            <div class="col-md-8">
+                                @Html.TextBox("Title", null, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group text-form" style="color: #A6CBED">
+                            @Html.Label("Description", "Description", new { @class = "col-md-4 control-label" })
+
+                            <div class="col-md-8">
+                                @Html.TextArea("Description", null, new { @class = "form-control" })
+                                @Html.ValidationMessage("Description", "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group text-form" style="color: #A6CBED">
+                            @Html.LabelFor(m => m.Image, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.TextBoxFor(m => m.Image, new { type = "file" })
+                                @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group text-form" style="color: #A6CBED">
+                            <label class="col-md-4 control-label">Select category</label>
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Value", "Text"),
+                             "Select category", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="text-center"><button class="btn my-4 btn-default" type="submit">Submit post</button> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+ }
+    </div>

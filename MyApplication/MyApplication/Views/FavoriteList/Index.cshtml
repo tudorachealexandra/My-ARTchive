@@ -1,0 +1,42 @@
+﻿@model MyApplication.Models.FavoriteList
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Favorite posts</h2>
+<br />
+
+<div class="products">
+    <div class="row">
+        <div class="container">
+            <div class="row">
+
+
+                @foreach (MyApplication.Models.Product prod in ViewBag.FavoriteProductsList)
+                {
+                    <div class="col-md-4 col-sm-5">
+
+                        @Html.Partial("ProductInfo", prod)
+                    </div>
+                }
+
+                @if (ViewBag.FavoriteProductsList.Count ==0 )
+                {
+                    <div class="col-md-12">
+                        <h2 > Oops...</h2>
+                        <h3>You haven't added anything to favorites yet!</h3>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function onClickRemoveProduct(id) {
+        alert("This is an HTML Alert Message.");
+    }
+</script>
+

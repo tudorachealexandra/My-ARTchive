@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MyApplication.Models.Product>
+
+<div class="container-fluid searchBarDiv">
+    <h2 class="text-head">DISCOVER</h2>
+    <br />
+
+    <div class="form-group search">
+        <input type="text" id="Search" class="chPlholder" placeholder="What's on your mind?">
+        <button class="buttonSearch" type="submit" onclick="SearchFunction()">Search</button>
+    </div>
+</div>
+
+
+<div class="container-fluid sortContainer" >
+    <div class="sortContainer2">
+        <p> Filter results by </p>
+        <div class="dropdownSort" >
+            <select id="Sort" onchange="SearchFunction()">
+                <option value="">Select</option>
+                <option value="DescDate">Descending Date</option>
+                <option value="AscDate">Ascending Date</option>
+                <option value="MostLikes">Most Likes</option>
+                <option value="LeastLikes">Least Likes</option>
+                <option value="MostPopular">Most Popular</option>
+                <option value="LeastPopular">Least Popular</option>
+            </select>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <br /><br />
+            <div class="productsContainer">
+
+
+                <div class="row">
+                    <div class="container">
+                        <div class="row">
+                            @foreach (MyApplication.Models.Product item in ViewBag.List)
+                            {
+                                <div class="col-md-4 col-sm-5">
+
+                                    @Html.Partial("ProductInfo", item)
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    function SearchFunction() {
+
+            var val = $("#Search").val();
+            var e = document.getElementById("Sort");
+            var sortOrder = e.options[e.selectedIndex].text;
+
+            location.href = '@Url.Action("Sort", "Product")?searchValue=' + val + '&sortOrder=' + sortOrder;
+
+    }
+
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+
+</script>
